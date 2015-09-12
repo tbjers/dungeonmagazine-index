@@ -1,28 +1,15 @@
-## README
+## Dungeon Magazine Index
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[ ![Codeship Status for tbjers/dungeonmagazine-index](https://codeship.com/projects/65756f70-3bad-0133-4187-428ee47fa127/status?branch=master)](https://codeship.com/projects/102145)
+[![Coverage Status](https://coveralls.io/repos/tbjers/dungeonmagazine-index/badge.svg?branch=master&service=github)](https://coveralls.io/github/tbjers/dungeonmagazine-index?branch=master) 
 
-Things you may want to cover:
+This application provides a searchable, keyword-based index for Dungeon Magazine issues 1 through 221.
 
-* Ruby version
+### Requirements
 
-* System dependencies
+* Ruby 2.2.2
+* MongoDB 2.6.x or above
 
-* Configuration
+### Deployment
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-`rake doc:app`.
+This application is deployed using Codeship and Coveralls.
