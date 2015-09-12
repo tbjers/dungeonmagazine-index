@@ -14,6 +14,7 @@ gem 'devise'
 gem 'rack-contrib'
 gem 'sucker_punch', '~> 1.0'
 gem 'rollbar', '~> 2.1.1'
+gem 'bootstrap-sass', '~> 3.3.5'
 gem 'rails_12factor'
 
 group :development, :test do
