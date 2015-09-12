@@ -133,3 +133,16 @@ test:
         read:
           mode: primary
         max_pool_size: 1
+
+
+production:
+  clients:
+    default:
+      options:
+        read:
+          mode: primary
+        connect_timeout: 15
+        socket_timeout: 15
+        heartbeat_frequency: 10
+  options:
+    raise_not_found_error: false
