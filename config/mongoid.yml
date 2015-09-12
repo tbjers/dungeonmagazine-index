@@ -138,12 +138,8 @@ test:
 production:
   clients:
     default:
-      database: <%= ENV['MONGOID_DATABASE'] %>
-      hosts:
-        - <%= ENV['MONGOID_HOST'] %>:<%= ENV['MONGOID_PORT'] %>
+      uri: <%= ENV['MONGOID_URL'] %>
       options:
-        user: <%= ENV['MONGOID_USERNAME'] %>
-        password: <%= ENV['MONGOID_PASSWORD'] %>
         read:
           mode: primary
         connect_timeout: 15
