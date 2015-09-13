@@ -15,6 +15,8 @@ gem 'rack-contrib'
 gem 'sucker_punch', '~> 1.0'
 gem 'rollbar', '~> 2.1.1'
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
 gem 'rails_12factor'
 
 group :development, :test do

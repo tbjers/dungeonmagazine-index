@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'support/request_helpers'
+require 'devise'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -40,6 +41,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.include Requests::JsonHelpers, type: :request
+  config.include Devise::TestHelpers, type: :controller
 end
 
 Mongo::Logger.logger.level = ::Logger::FATAL

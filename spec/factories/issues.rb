@@ -1,10 +1,9 @@
-require 'faker'
-
 FactoryGirl.define do
   factory :issue do
-    issue { Faker::Number.number(2) }
-    published { Faker::Time.between(DateTime.now - 30, DateTime.now) }
+    issue 1
+    published "2015-09-12"
     system "AD&D"
     adventures []
+    articles []
   end
 end
