@@ -1,4 +1,7 @@
 <h2>Articles</h2>
+<% if @issue.articles.count == 0 %>
+<p>No articles.</p>
+<% end %>
 <ul class="list-unstyled">
   <% @issue.articles.each do |article| %>
     <li><%= link_to article.title, [article.issue, article] %>, page <%= article.page %></li>

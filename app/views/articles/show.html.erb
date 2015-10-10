@@ -1,5 +1,6 @@
 <p>
   <% if user_signed_in? %>
+  <%= link_to 'Destroy', [@article.issue, @article], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-danger' %>
   <%= link_to 'Edit', edit_issue_article_path(@article.issue, @article), class: 'btn btn-default' %>
   <% end %>
   <%= link_to 'Back', issue_path(@article.issue), class: 'btn btn-default' %>
