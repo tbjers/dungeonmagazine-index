@@ -2,7 +2,6 @@
 @import 'bootstrap';
 @import 'bootstrap-datetimepicker';
 @import 'mixins';
-@import 'welcome';
 @import url('//fonts.googleapis.com/css?family=Pirata+One|Uncial+Antiqua');
 
 body {
@@ -32,6 +31,11 @@ body {
         & > a {
           color: inherit;
         }
+      }
+      & > div.date {
+        @extend .pull-right;
+        @extend .text-muted;
+        @extend small;
       }
       & > div.footer {
         @extend small;

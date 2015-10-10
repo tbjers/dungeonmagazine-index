@@ -7,6 +7,7 @@
   <li>
     <div>
       <h1><%= link_to 'issue ' + issue.issue.to_s, issue %></h1>
+      <div class="date"><%= issue.published %></div>
       <div class="footer">
         <%= issue.articles.count %> articles<br>
         <%= issue.adventures.count %> adventures

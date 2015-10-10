@@ -4,7 +4,7 @@
 <%= link_to 'New Article', new_issue_article_path(@issue), class: 'btn btn-default' %>
 <%= link_to 'New Adventure', new_issue_adventure_path(@issue), class: 'btn btn-default' %>
 <% end %>
-<h1>Dungeon #<%= @issue.issue %> <small><%= @issue.system %></small></h1>
+<h1>Dungeon #<%= @issue.issue %> <small><%= @issue.published %> (<%= @issue.system %>)</small></h1>
 
 <div class="row">
   <div class="col-md-6"><%= render 'adventures' %></div>

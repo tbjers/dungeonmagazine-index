@@ -4,6 +4,8 @@ class Issue
 
   field :issue, type: Integer
   field :system, type: String
+  field :published, type: String
+
   embeds_many :adventures
   embeds_many :articles
 
