@@ -1,6 +1,6 @@
+<%= link_to 'Show', [@article.issue, @article], class: 'btn-default' %>
+<%= link_to 'Back', issue_path(@article.issue), class: 'btn btn-default' %>
+
 <h1>Editing Article</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', [@article.issue, @article] %> |
-<%= link_to 'Back', issue_articles_path %>

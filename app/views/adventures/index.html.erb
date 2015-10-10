@@ -1,3 +1,8 @@
+<% if user_signed_in? %>
+<%= link_to 'New Adventure', new_issue_adventure_path, class: 'btn btn-default' %>
+<% end %>
+<%= link_to 'Back to issue', issue_path(@issue), class: 'btn btn-default' %>
+
 <h1>Issue Adventures</h1>
 
 <table class="table">
@@ -19,7 +24,7 @@
       <tr>
         <td><%= link_to adventure.title, [adventure.issue, adventure] %></td>
         <td><%= adventure.page %></td>
-        <td><%= adventure.authors %></td>
+        <td><%= adventure.authors.join(', ') %></td>
         <td><%= adventure.min_level %></td>
         <td><%= adventure.max_level %></td>
         <% if user_signed_in? %>
@@ -30,10 +35,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<% if user_signed_in? %>
-<%= link_to 'New Adventure', new_issue_adventure_path %> |
-<% end %>
-<%= link_to 'Back to issue', issue_path(@issue) %>

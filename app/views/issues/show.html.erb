@@ -1,18 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Issue:</strong>
-  <%= @issue.issue %>
-</p>
-
-<p>
-  <strong>System:</strong>
-  <%= @issue.system %>
-</p>
-
 <% if user_signed_in? %>
-<%= link_to 'Edit', edit_issue_path(@issue) %> |
+<%= link_to 'Edit', edit_issue_path(@issue), class: 'btn btn-default' %>
+<%= link_to 'New Article', new_issue_article_path(@issue), class: 'btn btn-default' %>
+<%= link_to 'New Adventure', new_issue_adventure_path(@issue), class: 'btn btn-default' %>
 <% end %>
-<%= link_to 'Back', issues_path %> |
-<%= link_to 'Adventures', issue_adventures_path(@issue) %> |
-<%= link_to 'Articles', issue_articles_path(@issue) %>
+<h1>Dungeon Magazine #<%= @issue.issue %> <small><%= @issue.system %></small></h1>
+
+<div class="row">
+  <div class="col-md-6"><%= render 'adventures' %></div>
+  <div class="col-md-6"><%= render 'articles' %></div>
+</div>

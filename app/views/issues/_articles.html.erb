@@ -1,0 +1,6 @@
+<h2>Articles</h2>
+<ul class="list-unstyled">
+  <% @issue.articles.each do |article| %>
+    <li><%= link_to article.title, [article.issue, article] %>, page <%= article.page %></li>
+  <% end %>
+</ul>

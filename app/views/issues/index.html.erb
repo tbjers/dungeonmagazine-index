@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
+<%= link_to 'New Issue', new_issue_path, class: 'btn btn-default' %>
+<% end %>
 
 <h1>Dungeon Issues</h1>
 
@@ -29,9 +31,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<% if user_signed_in? %>
-<%= link_to 'New Issue', new_issue_path %>
-<% end %>

@@ -1,13 +1,17 @@
+<% if user_signed_in? %>
+<%= link_to 'New Article', new_issue_article_path, class: 'btn btn-default' %>
+<% end %>
+<%= link_to 'Back to issue', issue_path(@issue), class: 'btn btn-default' %>
+
+
 <h1>Issue Articles</h1>
 
 <table class="table">
   <thead>
     <tr>
       <th>Title</th>
-      <th>Synopsis</th>
       <th>Page</th>
       <th>Authors</th>
-      <th>Keywords</th>
       <% if user_signed_in? %>
       <th></th>
       <% end %>
@@ -18,22 +22,13 @@
     <% @articles.each do |article| %>
       <tr>
         <td><%= link_to article.title, [article.issue, article] %></td>
-        <td><%= article.synopsis %></td>
         <td><%= article.page %></td>
-        <td><%= article.authors %></td>
-        <td><%= article.keywords %></td>
+        <td><%= article.authors.join(', ') %></td>
         <% if user_signed_in? %>
-        <td><%= link_to 'Edit', edit_article_path(article.issue, article) %> |
+        <td><%= link_to 'Edit', edit_issue_article_path(article.issue, article) %> |
           <%= link_to 'Destroy', [article.issue, article], method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<% if user_signed_in? %>
-<%= link_to 'New Article', new_issue_article_path %> |
-<% end %>
-<%= link_to 'Back to issue', issue_path(@issue) %>
