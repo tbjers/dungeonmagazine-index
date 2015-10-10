@@ -6,24 +6,13 @@
 </p>
 
 <p>
-  <strong>Published:</strong>
-  <%= @issue.published %>
-</p>
-
-<p>
   <strong>System:</strong>
   <%= @issue.system %>
 </p>
 
-<p>
-  <strong>Adventures:</strong>
-  <%= @issue.adventures %>
-</p>
-
-<p>
-  <strong>Articles:</strong>
-  <%= @issue.articles %>
-</p>
-
+<% if user_signed_in? %>
 <%= link_to 'Edit', edit_issue_path(@issue) %> |
-<%= link_to 'Back', issues_path %>
+<% end %>
+<%= link_to 'Back', issues_path %> |
+<%= link_to 'Adventures', issue_adventures_path(@issue) %> |
+<%= link_to 'Articles', issue_articles_path(@issue) %>

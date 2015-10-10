@@ -1,0 +1,39 @@
+<p>
+  <strong>Title:</strong>
+  <%= @adventure.title %>
+</p>
+
+<p>
+  <strong>Synopsis:</strong>
+  <%= @adventure.synopsis %>
+</p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @adventure.page %>
+</p>
+
+<p>
+  <strong>Authors:</strong>
+  <%= @adventure.authors %>
+</p>
+
+<p>
+  <strong>Min level:</strong>
+  <%= @adventure.min_level %>
+</p>
+
+<p>
+  <strong>Max level:</strong>
+  <%= @adventure.max_level %>
+</p>
+
+<p>
+  <strong>Keywords:</strong>
+  <%= @adventure.keywords %>
+</p>
+
+<% if user_signed_in? %>
+<%= link_to 'Edit', edit_issue_adventure_path(@adventure.issue, @adventure) %> |
+<% end %>
+<%= link_to 'Back', issue_adventures_path %>

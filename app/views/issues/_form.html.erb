@@ -11,41 +11,15 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :issue %>
-    <%= f.number_field :issue, class: 'form-control' %>
+  <div class="field">
+    <%= f.label :issue %><br>
+    <%= f.number_field :issue %>
   </div>
-
-  <div class="form-group">
-    <%= f.label :published %>
-    <div class="input-group date" id="publishedDate">
-      <%= f.text_field :published, class: 'form-control' %>
-      <span class="input-group-addon">
-        <span class="glyphicon glyphicon-calendar"></span>
-      </span>
-    </div>
+  <div class="field">
+    <%= f.label :system %><br>
+    <%= f.text_field :system %>
   </div>
-  <script type="text/javascript">
-    $(function () {
-      $('#publishedDate').datetimepicker({
-        format: 'YYYY-MM-DD'
-      });
-    });
-  </script>
-
-  <div class="form-group">
-    <%= f.label :system %>
-    <%= f.text_field :system, class: 'form-control' %>
+  <div class="actions">
+    <%= f.submit %>
   </div>
-
-  <!-- <div class="form-group">
-    <%= f.label :adventures %><br>
-    <%= f.text_field :adventures %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :articles %><br>
-    <%= f.text_field :articles %>
-  </div> -->
-  <%= f.submit %>
 <% end %>

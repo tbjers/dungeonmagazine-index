@@ -1,29 +1,29 @@
-<h1>Issues</h1>
+<p id="notice"><%= notice %></p>
 
-<table class="table table-striped table-condensed">
+<h1>Dungeon Issues</h1>
+
+<table class="table">
   <thead>
     <tr>
       <th>Issue</th>
-      <th>Published</th>
       <th>System</th>
-      <th>Created</th>
-      <th>Updated</th>
-      <th colspan="3"></th>
+      <th>Articles</th>
+      <th>Adventures</th>
+      <% if user_signed_in? %>
+      <th></th>
+      <% end %>
     </tr>
   </thead>
 
   <tbody>
     <% @issues.each do |issue| %>
       <tr>
-        <td><%= issue.issue %></td>
-        <td><%= issue.published %></td>
+        <td><%= link_to issue.issue, issue %></td>
         <td><%= issue.system %></td>
-        <td><%= issue.created_at %></td>
-        <td><%= issue.updated_at %></td>
+        <td><%= issue.articles.count %></td>
+        <td><%= issue.adventures.count %></td>
         <% if user_signed_in? %>
-        <td><%= link_to 'Show', issue %></td>
-        <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
-        <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td align="right"><%= link_to 'Edit', edit_issue_path(issue) %> | <%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

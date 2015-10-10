@@ -1,0 +1,45 @@
+<%= form_for([@adventure.issue, @adventure]) do |f| %>
+  <% if @adventure.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@adventure.errors.count, "error") %> prohibited this adventure from being saved:</h2>
+
+      <ul>
+      <% @adventure.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :synopsis %><br>
+    <%= f.text_area :synopsis %>
+  </div>
+  <div class="field">
+    <%= f.label :page %><br>
+    <%= f.number_field :page %>
+  </div>
+  <div class="field">
+    <%= f.label :authors %><br>
+    <%= f.text_field :authors %>
+  </div>
+  <div class="field">
+    <%= f.label :min_level %><br>
+    <%= f.number_field :min_level %>
+  </div>
+  <div class="field">
+    <%= f.label :max_level %><br>
+    <%= f.number_field :max_level %>
+  </div>
+  <div class="field">
+    <%= f.label :keywords %><br>
+    <%= f.text_field :keywords %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
