@@ -1,2 +1,21 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h1 class="cover-heading">Dungeon Magazine Index</h1>
+<p class="lead">Dungeon Magazine Index is an open source application for storing and tracking Dungeon Magazine issues and their respective articles and adventures with keywords and authors.</p>
+<p class="lead">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <%= form_tag(issues_path, method: 'get', role: 'search', id: 'search-form') do %>
+        <div class="input-group input-group-lg">
+          <%= text_field_tag :search, params[:search], class: "form-control ", placeholder: "Search..." %>
+          <span class="input-group-btn">
+            <button class="btn btn-info" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+          </span>
+        </div>
+      <%end %>
+    </div>
+  </div>
+</p>
+<br>
+<p class="lead">
+  <%= link_to 'Learn more', issues_path, class: 'btn btn-lg btn-default' %>
+  <a href="https://github.com/tbjers/dungeonmagazine-index" class="btn btn-lg btn-success">Contribute</a>
+</p>
