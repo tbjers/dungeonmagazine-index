@@ -4,7 +4,11 @@ class IssuesController < ApplicationController
   # GET /issues
   # GET /issues.json
   def index
-    @issues = Issue.all
+    if params[:search] && params[:search].strip.length > 0
+      @issues = Issue.search(params[:search])
+    else
+      @issues = Issue.all
+    end
   end
 
   # GET /issues/1
