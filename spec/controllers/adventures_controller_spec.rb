@@ -19,6 +19,9 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe AdventuresController, type: :controller do
+  before(:each) do
+    @issue = FactoryGirl.create(:issue)
+  end
 
   # This should return the minimal set of attributes required to create a valid
   # Adventure. As you add validations to Adventure, be sure to
@@ -39,7 +42,7 @@ RSpec.describe AdventuresController, type: :controller do
   describe "GET #index" do
     it "assigns all adventures as @adventures" do
       adventure = Adventure.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {:issue_id => @issue}, valid_session
       expect(assigns(:adventures)).to eq([adventure])
     end
   end
@@ -47,14 +50,14 @@ RSpec.describe AdventuresController, type: :controller do
   describe "GET #show" do
     it "assigns the requested adventure as @adventure" do
       adventure = Adventure.create! valid_attributes
-      get :show, {:id => adventure.to_param}, valid_session
+      get :show, {:issue_id => @issue, :id => adventure.to_param}, valid_session
       expect(assigns(:adventure)).to eq(adventure)
     end
   end
 
   describe "GET #new" do
     it "assigns a new adventure as @adventure" do
-      get :new, {}, valid_session
+      get :new, {:issue_id => @issue}, valid_session
       expect(assigns(:adventure)).to be_a_new(Adventure)
     end
   end
@@ -62,7 +65,7 @@ RSpec.describe AdventuresController, type: :controller do
   describe "GET #edit" do
     it "assigns the requested adventure as @adventure" do
       adventure = Adventure.create! valid_attributes
-      get :edit, {:id => adventure.to_param}, valid_session
+      get :edit, {:issue_id => @issue, :id => adventure.to_param}, valid_session
       expect(assigns(:adventure)).to eq(adventure)
     end
   end
@@ -76,25 +79,25 @@ RSpec.describe AdventuresController, type: :controller do
       end
 
       it "assigns a newly created adventure as @adventure" do
-        post :create, {:adventure => valid_attributes}, valid_session
+        post :create, {:issue_id => @issue, :adventure => valid_attributes}, valid_session
         expect(assigns(:adventure)).to be_a(Adventure)
         expect(assigns(:adventure)).to be_persisted
       end
 
       it "redirects to the created adventure" do
-        post :create, {:adventure => valid_attributes}, valid_session
+        post :create, {:issue_id => @issue, :adventure => valid_attributes}, valid_session
         expect(response).to redirect_to(Adventure.last)
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved adventure as @adventure" do
-        post :create, {:adventure => invalid_attributes}, valid_session
+        post :create, {:issue_id => @issue, :adventure => invalid_attributes}, valid_session
         expect(assigns(:adventure)).to be_a_new(Adventure)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:adventure => invalid_attributes}, valid_session
+        post :create, {:issue_id => @issue, :adventure => invalid_attributes}, valid_session
         expect(response).to render_template("new")
       end
     end
@@ -108,20 +111,20 @@ RSpec.describe AdventuresController, type: :controller do
 
       it "updates the requested adventure" do
         adventure = Adventure.create! valid_attributes
-        put :update, {:id => adventure.to_param, :adventure => new_attributes}, valid_session
+        put :update, {:issue_id => @issue, :id => adventure.to_param, :adventure => new_attributes}, valid_session
         adventure.reload
         skip("Add assertions for updated state")
       end
 
       it "assigns the requested adventure as @adventure" do
         adventure = Adventure.create! valid_attributes
-        put :update, {:id => adventure.to_param, :adventure => valid_attributes}, valid_session
+        put :update, {:issue_id => @issue, :id => adventure.to_param, :adventure => valid_attributes}, valid_session
         expect(assigns(:adventure)).to eq(adventure)
       end
 
       it "redirects to the adventure" do
         adventure = Adventure.create! valid_attributes
-        put :update, {:id => adventure.to_param, :adventure => valid_attributes}, valid_session
+        put :update, {:issue_id => @issue, :id => adventure.to_param, :adventure => valid_attributes}, valid_session
         expect(response).to redirect_to(adventure)
       end
     end
@@ -129,13 +132,13 @@ RSpec.describe AdventuresController, type: :controller do
     context "with invalid params" do
       it "assigns the adventure as @adventure" do
         adventure = Adventure.create! valid_attributes
-        put :update, {:id => adventure.to_param, :adventure => invalid_attributes}, valid_session
+        put :update, {:issue_id => @issue, :id => adventure.to_param, :adventure => invalid_attributes}, valid_session
         expect(assigns(:adventure)).to eq(adventure)
       end
 
       it "re-renders the 'edit' template" do
         adventure = Adventure.create! valid_attributes
-        put :update, {:id => adventure.to_param, :adventure => invalid_attributes}, valid_session
+        put :update, {:issue_id => @issue, :id => adventure.to_param, :adventure => invalid_attributes}, valid_session
         expect(response).to render_template("edit")
       end
     end
@@ -145,13 +148,13 @@ RSpec.describe AdventuresController, type: :controller do
     it "destroys the requested adventure" do
       adventure = Adventure.create! valid_attributes
       expect {
-        delete :destroy, {:id => adventure.to_param}, valid_session
+        delete :destroy, {:issue_id => @issue, :id => adventure.to_param}, valid_session
       }.to change(Adventure, :count).by(-1)
     end
 
     it "redirects to the adventures list" do
       adventure = Adventure.create! valid_attributes
-      delete :destroy, {:id => adventure.to_param}, valid_session
+      delete :destroy, {:issue_id => @issue, :id => adventure.to_param}, valid_session
       expect(response).to redirect_to(adventures_url)
     end
   end
