@@ -130,8 +130,6 @@ test:
       hosts:
         - localhost:27017
       options:
-        read:
-          mode: primary
         max_pool_size: 1
 
 
@@ -140,8 +138,6 @@ production:
     default:
       uri: <%= ENV['MONGOID_URL'] %>
       options:
-        read:
-          mode: primary
         connect_timeout: 15
         socket_timeout: 15
         heartbeat_frequency: 10
