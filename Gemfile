@@ -9,7 +9,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
-gem 'mongoid', '~> 5.0.0.beta'
+gem 'mongoid', '~> 5.0.0'
 gem 'devise'
 gem 'rack-contrib'
 gem 'sucker_punch', '~> 1.0'
@@ -21,7 +21,7 @@ gem 'rails_12factor'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'mongoid-rspec', '2.3.0.beta'
+  gem 'mongoid-rspec', '~> 3.0.0'
   gem 'factory_girl_rails'
 end
 
