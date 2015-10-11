@@ -4,4 +4,8 @@ module ApplicationHelper
       '<span class="label label-default">' + keyword + '</span>'
     end.compact.join("\n").html_safe
   end
+
+  def render_authors (authors)
+    authors.compact.join(', ')
+  end
 end

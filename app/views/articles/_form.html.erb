@@ -1,7 +1,7 @@
 <%= form_for([@article.issue, @article]) do |f| %>
   <% if @article.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <h4><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h4>
 
       <ul>
       <% @article.errors.full_messages.each do |message| %>
@@ -24,12 +24,21 @@
     <%= f.number_field :page, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :authors %>
-    <%= f.text_field :authors, class: 'form-control' %>
+    <%= f.label :authors %><br>
+    <%= f.select :authors, @article.authors || [], {}, multiple: true, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :keywords %>
-    <%= f.text_field :keywords, class: 'form-control' %>
+    <%= f.label :keywords %><br>
+    <%= f.select :keywords, @article.keywords || [], {}, multiple: true, class: 'form-control' %>
   </div>
   <%= f.submit({class: 'btn btn-primary'}) %>
 <% end %>
+<script>
+tagsinputConf = {
+  trimValue: true,
+  allowDuplicates: false,
+  freeInput: true
+};
+$('#article_authors').tagsinput(tagsinputConf);
+$('#article_keywords').tagsinput(tagsinputConf);
+</script>

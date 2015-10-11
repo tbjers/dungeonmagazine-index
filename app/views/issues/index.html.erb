@@ -3,7 +3,7 @@
 <% end %>
 
 <ul class="issues">
-<% @issues.each do |issue| %>
+<% @issues.order_by(:issue.asc).each do |issue| %>
   <li>
     <div>
       <h1><%= link_to 'issue ' + issue.issue.to_s, issue %></h1>

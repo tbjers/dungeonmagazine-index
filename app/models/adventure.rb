@@ -10,5 +10,11 @@ class Adventure
   field :max_level, type: Integer
   field :keywords, type: Array
 
+  validates :title, presence: true
+  validates :synopsis, presence: true
+  validates :page, presence: true
+  validates :authors, presence: true
+  validates :keywords, presence: true
+
   embedded_in :issue
 end

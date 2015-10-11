@@ -25,11 +25,11 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @params = article_params
-    @params['keywords'] = @params['keywords'].split(',').map(&:strip)
-    @params['authors'] = @params['authors'].split(',').map(&:strip)
     @issue = Issue.find(params[:issue_id])
-    @article = @issue.articles.new(@params)
+    params = adventure_params
+    params['authors'].reject! { |k| k.empty? }
+    params['keywords'].reject! { |k| k.empty? }
+    @article = @issue.articles.new(params)
 
     respond_to do |format|
       if @article.save
@@ -46,10 +46,10 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     respond_to do |format|
-      @params = article_params
-      @params['keywords'] = @params['keywords'].split(',').map(&:strip)
-      @params['authors'] = @params['authors'].split(',').map(&:strip)
-      if @article.update(@params)
+      params = adventure_params
+      params['authors'].reject! { |k| k.empty? }
+      params['keywords'].reject! { |k| k.empty? }
+      if @article.update(params)
         format.html { redirect_to [@article.issue, @article], notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
       else
@@ -77,6 +77,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :synopsis, :page, :authors, :keywords)
+      params.require(:article).permit(:title, :synopsis, :page, { :authors => [] }, { :keywords => [] })
     end
 end

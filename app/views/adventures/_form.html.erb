@@ -1,7 +1,7 @@
 <%= form_for([@adventure.issue, @adventure]) do |f| %>
   <% if @adventure.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@adventure.errors.count, "error") %> prohibited this adventure from being saved:</h2>
+      <h4><%= pluralize(@adventure.errors.count, "error") %> prohibited this adventure from being saved:</h4>
 
       <ul>
       <% @adventure.errors.full_messages.each do |message| %>
@@ -24,8 +24,8 @@
     <%= f.number_field :page, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :authors %>
-    <%= f.text_field :authors, class: 'form-control' %>
+    <%= f.label :authors %><br>
+    <%= f.select :authors, @adventure.authors || [], {}, multiple: true, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :min_level %>
@@ -36,8 +36,17 @@
     <%= f.number_field :max_level, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :keywords %>
-    <%= f.text_field :keywords, class: 'form-control' %>
+    <%= f.label :keywords %><br>
+    <%= f.select :keywords, @adventure.keywords || [], {}, multiple: true, class: 'form-control' %>
   </div>
   <%= f.submit({class: 'btn btn-primary'}) %>
 <% end %>
+<script>
+tagsinputConf = {
+  trimValue: true,
+  allowDuplicates: false,
+  freeInput: true
+};
+$('#adventure_authors').tagsinput(tagsinputConf);
+$('#adventure_keywords').tagsinput(tagsinputConf);
+</script>

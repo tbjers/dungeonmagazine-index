@@ -6,6 +6,10 @@ class Issue
   field :system, type: String
   field :published, type: String
 
+  validates :issue, presence: true
+  validates :system, presence: true
+  validates :published, presence: true
+
   embeds_many :adventures
   embeds_many :articles
 

@@ -3,7 +3,7 @@
 <p>No adventures.</p>
 <% end %>
 <ul class="list-unstyled">
-  <% @issue.adventures.each do |adventure| %>
+  <% @issue.adventures.order_by(:page.asc).each do |adventure| %>
     <li><%= link_to adventure.title, [adventure.issue, adventure] %>, page <%= adventure.page %></li>
   <% end %>
 </ul>

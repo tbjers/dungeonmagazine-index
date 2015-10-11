@@ -3,7 +3,7 @@
 <p>No articles.</p>
 <% end %>
 <ul class="list-unstyled">
-  <% @issue.articles.each do |article| %>
+  <% @issue.articles.order_by(:page.asc).each do |article| %>
     <li><%= link_to article.title, [article.issue, article] %>, page <%= article.page %></li>
   <% end %>
 </ul>

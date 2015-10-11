@@ -25,11 +25,11 @@ class AdventuresController < ApplicationController
   # POST /adventures
   # POST /adventures.json
   def create
-    @params = adventure_params
-    @params['keywords'] = @params['keywords'].split(',').map(&:strip)
-    @params['authors'] = @params['authors'].split(',').map(&:strip)
     @issue = Issue.find(params[:issue_id])
-    @adventure = @issue.adventures.new(@params)
+    params = adventure_params
+    params['authors'].reject! { |k| k.empty? }
+    params['keywords'].reject! { |k| k.empty? }
+    @adventure = @issue.adventures.new(params)
 
     respond_to do |format|
       if @adventure.save
@@ -46,10 +46,10 @@ class AdventuresController < ApplicationController
   # PATCH/PUT /adventures/1.json
   def update
     respond_to do |format|
-      @params = adventure_params
-      @params['keywords'] = @params['keywords'].split(',').map(&:strip)
-      @params['authors'] = @params['authors'].split(',').map(&:strip)
-      if @adventure.update(@params)
+      params = adventure_params
+      params['authors'].reject! { |k| k.empty? }
+      params['keywords'].reject! { |k| k.empty? }
+      if @adventure.update(params)
         format.html { redirect_to [@adventure.issue, @adventure], notice: 'Adventure was successfully updated.' }
         format.json { render :show, status: :ok, location: @adventure }
       else
@@ -77,6 +77,6 @@ class AdventuresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def adventure_params
-      params.require(:adventure).permit(:title, :synopsis, :page, :authors, :min_level, :max_level, :keywords)
+      params.require(:adventure).permit(:title, :synopsis, :page, { :authors => [] }, :min_level, :max_level, { :keywords => [] })
     end
 end

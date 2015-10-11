@@ -5,7 +5,7 @@
 <%= link_to 'Back', issue_path(@adventure.issue), class: 'btn btn-default' %>
 
 <h2><%= @adventure.title %> <small>page <%= @adventure.page %></small></h2>
-<p><em>by <%= @adventure.authors.join(', ') %></em></p>
+<p><em>by <%= render_authors(@adventure.authors) %></em></p>
 <p class="lead"><%= @adventure.synopsis %></p>
 <p>An adventure for characters between level <%= @adventure.min_level %> and <%= @adventure.max_level %>.</p>
 <p><%= render_keywords(@adventure.keywords) %></p>
