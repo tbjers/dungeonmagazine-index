@@ -37,4 +37,4 @@ group :test do
   gem 'simplecov', require: false
 end
 
-gem 'puma'
+gem 'puma', '>= 3.12.6'
